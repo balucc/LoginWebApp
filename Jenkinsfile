@@ -25,15 +25,18 @@ pipeline{
               withDockerRegistry(credentialsId: 'balu_dockerhub', url: 'https://hub.docker.com/repository/docker/balucc/loginwebapp') {
                 sh 'docker push balucc/loginwebapp:${BUILD_ID}'
     }
-}
+            }
+        }
+        stage('Push second image'){   
             steps{
                withDockerRegistry(credentialsId: 'balu_dockerhub', url: 'https://hub.docker.com/repository/docker/balucc/mysql') {
                    sh 'docker push balucc/mysql:${BUILD_ID}'
 
-                }
+               }
+            }
             }
         }
 
         }
-    }    
+       
 
