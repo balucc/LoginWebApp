@@ -22,19 +22,13 @@ pipeline{
         }
         stage('Push Docker Image'){
             steps{
-              withDockerRegistry(credentialsId: 'balu_dockerhub') {
+              withDockerRegistry(credentialsId: 'balu_dockerhub', url: 'https://index.docker.io/v1/') {
                 sh 'docker push balucc/loginwebapp:${BUILD_ID}'
+                sh 'docker push balucc/mysql:${BUILD_ID}'  
     }
             }
         }
-        stage('Push second image'){   
-            steps{
-               withDockerRegistry(credentialsId: 'balu_dockerhub') {
-                   sh 'docker push balucc/mysql:${BUILD_ID}'
-
-               }
-            }
-            }
+       
         }
 
         }
