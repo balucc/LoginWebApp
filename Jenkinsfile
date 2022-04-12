@@ -16,8 +16,8 @@ pipeline{
         }
         stage('build docker image'){
             steps{
-                sh 'docker build -t --name balucc/loginwebapp:${BUILD_ID} -f Dockerfile-tomcat .'
-                sh 'docker build -t --name balucc/mysql:${BUILD_ID} -f Dockerfile-mysql .'
+                sh 'docker build -t balucc/loginwebapp:${BUILD_ID} -f Dockerfile-tomcat .'
+                sh 'docker build -t balucc/mysql:${BUILD_ID} -f Dockerfile-mysql .'
             } 
         }
         stage('Push Docker Image'){
