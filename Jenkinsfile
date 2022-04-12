@@ -13,6 +13,7 @@ pipeline{
             steps{
                 sh 'mvn clean package'
             }
+        }
         stage('build docker image'){
             steps{
                 sh 'docker build -t --name balucc/loginwebapp:${BUILD_ID} -f Dockerfile-tomcat .'
@@ -35,4 +36,4 @@ pipeline{
 
         }
     }    
-}
+
